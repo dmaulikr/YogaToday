@@ -27,6 +27,12 @@
 		B52900751BAFA4A200257862 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52900681BAFA3EA00257862 /* Alamofire.framework */; };
 		B52900761BAFA63800257862 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52900681BAFA3EA00257862 /* Alamofire.framework */; };
 		B52900771BAFA63800257862 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52900681BAFA3EA00257862 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B529007F1BAFBC8F00257862 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B529FFE11BAF9E3500257862 /* NotificationCenter.framework */; settings = {ASSET_TAGS = (); }; };
+		B52900821BAFBC8F00257862 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52900811BAFBC8F00257862 /* TodayViewController.swift */; };
+		B52900851BAFBC8F00257862 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52900831BAFBC8F00257862 /* MainInterface.storyboard */; };
+		B52900891BAFBC8F00257862 /* YogaToday.Widget.Video.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B529007E1BAFBC8F00257862 /* YogaToday.Widget.Video.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B529008E1BAFC32A00257862 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B529008D1BAFC32A00257862 /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
+		B52900901BAFC38000257862 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B529008F1BAFC38000257862 /* Media.xcassets */; settings = {ASSET_TAGS = (); }; };
 		B529FFCA1BAF9DBE00257862 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529FFC91BAF9DBE00257862 /* AppDelegate.swift */; };
 		B529FFCC1BAF9DBE00257862 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B529FFCB1BAF9DBE00257862 /* HomeViewController.swift */; };
 		B529FFCF1BAF9DBE00257862 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B529FFCD1BAF9DBE00257862 /* Main.storyboard */; };
@@ -59,6 +65,13 @@
 			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
 			remoteInfo = "Alamofire iOS";
 		};
+		B52900871BAFBC8F00257862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B529FFBE1BAF9DBE00257862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B529007D1BAFBC8F00257862;
+			remoteInfo = YogaToday.Widget.Video;
+		};
 		B529FFFE1BAF9FFD00257862 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B529FFBE1BAF9DBE00257862 /* Project object */;
@@ -87,6 +100,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				B52900891BAFBC8F00257862 /* YogaToday.Widget.Video.appex in Embed App Extensions */,
 				B52900001BAF9FFD00257862 /* YogaToday.Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -115,6 +129,12 @@
 		B529005A1BAFA14800257862 /* YogaStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YogaStats.swift; path = Model/YogaStats.swift; sourceTree = "<group>"; };
 		B529005D1BAFA15000257862 /* YogaService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YogaService.swift; path = Network/YogaService.swift; sourceTree = "<group>"; };
 		B529005F1BAFA3EA00257862 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B529007E1BAFBC8F00257862 /* YogaToday.Widget.Video.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YogaToday.Widget.Video.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52900811BAFBC8F00257862 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		B52900841BAFBC8F00257862 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B52900861BAFBC8F00257862 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B529008D1BAFC32A00257862 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		B529008F1BAFC38000257862 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		B529FFC61BAF9DBE00257862 /* YogaToday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YogaToday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529FFC91BAF9DBE00257862 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B529FFCB1BAF9DBE00257862 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +155,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52900751BAFA4A200257862 /* Alamofire.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B529007B1BAFBC8F00257862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B529007F1BAFBC8F00257862 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,11 +295,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B52900801BAFBC8F00257862 /* YogaToday.Widget.Video */ = {
+			isa = PBXGroup;
+			children = (
+				B52900811BAFBC8F00257862 /* TodayViewController.swift */,
+				B52900831BAFBC8F00257862 /* MainInterface.storyboard */,
+				B52900861BAFBC8F00257862 /* Info.plist */,
+				B529008D1BAFC32A00257862 /* Media.xcassets */,
+			);
+			path = YogaToday.Widget.Video;
+			sourceTree = "<group>";
+		};
 		B529FFBD1BAF9DBE00257862 = {
 			isa = PBXGroup;
 			children = (
 				B529FFC81BAF9DBE00257862 /* YogaToday */,
 				B529FFF71BAF9FFD00257862 /* YogaToday.Widget */,
+				B52900801BAFBC8F00257862 /* YogaToday.Widget.Video */,
 				B529000A1BAFA04F00257862 /* YogaTodayKit */,
 				B529FFE01BAF9E3500257862 /* Frameworks */,
 				B529FFC71BAF9DBE00257862 /* Products */,
@@ -284,6 +324,7 @@
 				B529FFC61BAF9DBE00257862 /* YogaToday.app */,
 				B529FFF51BAF9FFD00257862 /* YogaToday.Widget.appex */,
 				B52900091BAFA04F00257862 /* YogaTodayKit.framework */,
+				B529007E1BAFBC8F00257862 /* YogaToday.Widget.Video.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,6 +356,7 @@
 				B529FFF81BAF9FFD00257862 /* TodayViewController.swift */,
 				B529FFFA1BAF9FFD00257862 /* MainInterface.storyboard */,
 				B529FFFD1BAF9FFD00257862 /* Info.plist */,
+				B529008F1BAFC38000257862 /* Media.xcassets */,
 			);
 			path = YogaToday.Widget;
 			sourceTree = "<group>";
@@ -355,6 +397,23 @@
 			productReference = B52900091BAFA04F00257862 /* YogaTodayKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B529007D1BAFBC8F00257862 /* YogaToday.Widget.Video */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B529008A1BAFBC8F00257862 /* Build configuration list for PBXNativeTarget "YogaToday.Widget.Video" */;
+			buildPhases = (
+				B529007A1BAFBC8F00257862 /* Sources */,
+				B529007B1BAFBC8F00257862 /* Frameworks */,
+				B529007C1BAFBC8F00257862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YogaToday.Widget.Video;
+			productName = YogaToday.Widget.Video;
+			productReference = B529007E1BAFBC8F00257862 /* YogaToday.Widget.Video.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B529FFC51BAF9DBE00257862 /* YogaToday */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B529FFD81BAF9DBE00257862 /* Build configuration list for PBXNativeTarget "YogaToday" */;
@@ -371,6 +430,7 @@
 				B529FFFF1BAF9FFD00257862 /* PBXTargetDependency */,
 				B529000F1BAFA04F00257862 /* PBXTargetDependency */,
 				B52900791BAFA63800257862 /* PBXTargetDependency */,
+				B52900881BAFBC8F00257862 /* PBXTargetDependency */,
 			);
 			name = YogaToday;
 			productName = YogaToday;
@@ -407,6 +467,9 @@
 					B52900081BAFA04F00257862 = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					B529007D1BAFBC8F00257862 = {
+						CreatedOnToolsVersion = 7.0;
+					};
 					B529FFC51BAF9DBE00257862 = {
 						CreatedOnToolsVersion = 7.0;
 					};
@@ -437,6 +500,7 @@
 				B529FFC51BAF9DBE00257862 /* YogaToday */,
 				B529FFF41BAF9FFD00257862 /* YogaToday.Widget */,
 				B52900081BAFA04F00257862 /* YogaTodayKit */,
+				B529007D1BAFBC8F00257862 /* YogaToday.Widget.Video */,
 			);
 		};
 /* End PBXProject section */
@@ -459,6 +523,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B529007C1BAFBC8F00257862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B529008E1BAFC32A00257862 /* Media.xcassets in Resources */,
+				B52900851BAFBC8F00257862 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B529FFC41BAF9DBE00257862 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,6 +546,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52900901BAFC38000257862 /* Media.xcassets in Resources */,
 				B529FFFC1BAF9FFD00257862 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,6 +566,14 @@
 				B529005B1BAFA14800257862 /* YogaPoint.swift in Sources */,
 				B529005C1BAFA14800257862 /* YogaStats.swift in Sources */,
 				B529005E1BAFA15000257862 /* YogaService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B529007A1BAFBC8F00257862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52900821BAFBC8F00257862 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +607,11 @@
 			name = "Alamofire iOS";
 			targetProxy = B52900781BAFA63800257862 /* PBXContainerItemProxy */;
 		};
+		B52900881BAFBC8F00257862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B529007D1BAFBC8F00257862 /* YogaToday.Widget.Video */;
+			targetProxy = B52900871BAFBC8F00257862 /* PBXContainerItemProxy */;
+		};
 		B529FFFF1BAF9FFD00257862 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B529FFF41BAF9FFD00257862 /* YogaToday.Widget */;
@@ -533,6 +620,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B52900831BAFBC8F00257862 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B52900841BAFBC8F00257862 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B529FFCD1BAF9DBE00257862 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -622,6 +717,28 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B529008B1BAFBC8F00257862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YogaToday.Widget.Video/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiahu.net.YogaToday.YogaToday-Widget-Video";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		B529008C1BAFBC8F00257862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = YogaToday.Widget.Video/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "jiahu.net.YogaToday.YogaToday-Widget-Video";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -746,6 +863,14 @@
 			buildConfigurations = (
 				B52900131BAFA04F00257862 /* Debug */,
 				B52900141BAFA04F00257862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B529008A1BAFBC8F00257862 /* Build configuration list for PBXNativeTarget "YogaToday.Widget.Video" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B529008B1BAFBC8F00257862 /* Debug */,
+				B529008C1BAFBC8F00257862 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

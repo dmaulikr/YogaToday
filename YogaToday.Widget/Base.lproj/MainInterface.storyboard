@@ -23,7 +23,7 @@
                                 <color key="textColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qb-J1-q3P">
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qb-J1-q3P">
                                 <rect key="frame" x="266" y="0.0" width="44" height="44"/>
                                 <animations/>
                                 <constraints>
@@ -31,6 +31,7 @@
                                     <constraint firstAttribute="width" constant="44" id="gSc-fY-qw2"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="5"/>
+                                <state key="normal" image="caret-notification-center"/>
                                 <connections>
                                     <action selector="toggleLineChart:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="XHI-E8-6xN"/>
                                 </connections>
@@ -84,4 +85,7 @@
             <point key="canvasLocation" x="516" y="285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="caret-notification-center" width="14" height="9"/>
+    </resources>
 </document>

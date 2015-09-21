@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B17c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Today View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="YogaToday_Widget_Video" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
+                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVP-0X-2iw">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="320"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="6cZ-q7-IsD">
+                                    <size key="itemSize" width="100" height="120"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="YogaVideoIdentifier" id="N4i-1u-adl">
+                                        <rect key="frame" x="10" y="5" width="100" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="120"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Video.Beginner.01" translatesAutoresizingMaskIntoConstraints="NO" id="k5i-Ox-7UV">
+                                                    <rect key="frame" x="0.0" y="-2" width="100" height="88"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="88" id="cuE-Ot-mkp"/>
+                                                        <constraint firstAttribute="width" constant="100" id="tHB-0Z-rfD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfZ-bm-phE">
+                                                    <rect key="frame" x="19" y="86" width="62" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="kGc-ri-chK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <state key="normal" title="Beginner"/>
+                                                </button>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="LfZ-bm-phE" firstAttribute="top" secondItem="k5i-Ox-7UV" secondAttribute="bottom" id="VEW-dB-jWR"/>
+                                            <constraint firstItem="LfZ-bm-phE" firstAttribute="centerX" secondItem="N4i-1u-adl" secondAttribute="centerX" id="Y70-4q-bJ8"/>
+                                            <constraint firstItem="k5i-Ox-7UV" firstAttribute="centerX" secondItem="N4i-1u-adl" secondAttribute="centerX" id="hed-me-pH6"/>
+                                            <constraint firstItem="k5i-Ox-7UV" firstAttribute="top" secondItem="N4i-1u-adl" secondAttribute="topMargin" constant="-10" id="jte-JJ-dck"/>
+                                        </constraints>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="M4Y-Lb-cyx" id="PFP-hI-T1c"/>
+                                    <outlet property="delegate" destination="M4Y-Lb-cyx" id="jRK-3Z-gTD"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pVP-0X-2iw" secondAttribute="trailing" constant="-20" id="AjZ-AI-n2d"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="pVP-0X-2iw" secondAttribute="bottom" id="CA7-8i-tsQ"/>
+                            <constraint firstItem="pVP-0X-2iw" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-20" id="drN-D0-EEn"/>
+                            <constraint firstItem="pVP-0X-2iw" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="l4O-Pr-TIm"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="320"/>
+                    <connections>
+                        <outlet property="collectionView" destination="pVP-0X-2iw" id="owx-fZ-gAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Video.Beginner.01" width="50" height="44"/>
+    </resources>
+</document>
