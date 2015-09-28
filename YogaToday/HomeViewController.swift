@@ -29,8 +29,12 @@
 
 import UIKit
 import YogaTodayKit
+import AssetsLibrary
 
-class HomeViewController: UIViewController, JBLineChartViewDataSource, JBLineChartViewDelegate {
+class HomeViewController: UIViewController, JBLineChartViewDataSource, JBLineChartViewDelegate, FBSDKLoginButtonDelegate, FBSDKSharingDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
+    @IBOutlet var avatarImageView: UIImageView!
     
     @IBOutlet weak var pointOnDayLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
@@ -38,6 +42,9 @@ class HomeViewController: UIViewController, JBLineChartViewDataSource, JBLineCha
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var lineChartView: JBLineChartView!
     
+    let ReadPermissions = ["user_about_me", "email"]
+    let PublishPermissions = ["publish_actions"]
+    let imagePicker = UIImagePickerController()
     let dateFormatter: NSDateFormatter
     
     let dollarNumberFormatter: NSNumberFormatter, prefixedDollarNumberFormatter: NSNumberFormatter
@@ -76,12 +83,24 @@ class HomeViewController: UIViewController, JBLineChartViewDataSource, JBLineCha
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        imagePicker.delegate = self
         lineChartView.dataSource = self
         lineChartView.delegate = self
         
         pointOnDayLabel.text = ""
         dayLabel.text = ""
+        
+        if (FBSDKAccessToken.currentAccessToken() != nil)
+        {
+            // User is already logged in, do work such as go to next view controller.
+            returnUserData()
+        }
+        else
+        {
+            loginButton.readPermissions = ReadPermissions
+            loginButton.publishPermissions = PublishPermissions
+        }
     }
     
     override func viewWillAppear(animated: Bool)  {
@@ -219,6 +238,174 @@ class HomeViewController: UIViewController, JBLineChartViewDataSource, JBLineCha
     func didUnselectLineInLineChartView(lineChartView: JBLineChartView!) {
         pointOnDayLabel.text = ""
         dayLabel.text = ""
+    }
+    
+    // MARK: - Facebook Delegate Methods
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+                returnUserData()
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
+    
+    func returnUserData()
+    {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=id,name,email,picture", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil)
+            {
+                // Process error
+                print("Error: \(error)")
+            }
+            else
+            {
+                print("fetched user: \(result)")
+                let userName : String = result.valueForKey("name") as! String
+                print("User Name is: \(userName)")
+                let userEmail : String = result.valueForKey("email") as! String
+                print("User Email is: \(userEmail)")
+                let userAvatar : String = result.valueForKey("picture")?.valueForKey("data")?.valueForKey("url") as! String
+                print("User Avatar is: \(userAvatar)")
+                
+                YogaService.sharedInstance.loadImageFromPath(userAvatar, completion: { image, error in
+                    if image != nil {
+                        self.avatarImageView.image = image
+                    }
+                })
+            }
+        })
+    }
+    
+    // MARK: - Facebook Sharing Delegate
+    
+    @IBAction func sharePressed(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Sharing Option", preferredStyle: .ActionSheet)
+        
+        let shareLinkAction = UIAlertAction(title: "Link", style: .Default, handler:
+            {
+                (alert: UIAlertAction!) -> Void in
+                // share a link
+                let linkContent: FBSDKShareLinkContent = FBSDKShareLinkContent()
+                linkContent.contentTitle = "TUTORIALS FOR DEVELOPERS & GAMERS"
+                linkContent.contentURL = NSURL(string: "http://www.raywenderlich.com")
+        
+                FBSDKShareDialog.showFromViewController(self, withContent: linkContent, delegate: self)
+        })
+        
+        let sharePhotosAction = UIAlertAction(title: "Photos", style: .Default, handler:
+            {
+                (alert: UIAlertAction!) -> Void in
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .PhotoLibrary
+                
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        })
+        
+        let shareVideoAction = UIAlertAction(title: "Video", style: .Default, handler:
+            {
+                (alert: UIAlertAction!) -> Void in
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .PhotoLibrary
+                
+                if let availableMediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.PhotoLibrary) {
+                    self.imagePicker.mediaTypes = availableMediaTypes
+                }
+                
+                self.presentViewController(self.imagePicker, animated: true, completion: nil)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler:
+            {
+                (alert: UIAlertAction!) -> Void in
+        })
+        
+        optionMenu.addAction(shareLinkAction)
+        optionMenu.addAction(sharePhotosAction)
+        optionMenu.addAction(shareVideoAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        print("Shared: \(results.description)")
+    }
+    
+    func sharer(sharer: FBSDKSharing!, didFailWithError error: NSError!) {
+        print("Failed when sharing: \(error.localizedDescription).")
+    }
+    
+    func sharerDidCancel(sharer: FBSDKSharing!) {
+        print("Cancelled sharing.")
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.avatarImageView.image = pickedImage
+            
+            // share photos
+            let photo: FBSDKSharePhoto = FBSDKSharePhoto(image: self.avatarImageView.image, userGenerated: true)
+            let photoContent: FBSDKSharePhotoContent = FBSDKSharePhotoContent()
+            photoContent.photos = [photo];
+    
+            dismissViewControllerAnimated(false, completion: nil)
+            
+            // share photo by ShareDialog
+//            FBSDKShareDialog.showFromViewController(self, withContent: photoContent, delegate: self)
+            
+            // share photo by Messager
+//            FBSDKMessageDialog.showWithContent(photoContent, delegate: nil)
+            
+            // share photo directly
+            FBSDKShareAPI.shareWithContent(photoContent, delegate:self)
+        }
+        else if let videoURL = info[UIImagePickerControllerReferenceURL] as? NSURL {
+            // share a video
+            let video: FBSDKShareVideo = FBSDKShareVideo(videoURL: videoURL)
+            let videoContent: FBSDKShareVideoContent = FBSDKShareVideoContent()
+            videoContent.video = video;
+    
+            dismissViewControllerAnimated(false, completion: nil)
+            
+            if (FBSDKAccessToken.currentAccessToken() != nil && FBSDKAccessToken.currentAccessToken().hasGranted("publish_actions")) {
+                    //            FBSDKShareDialog.showFromViewController(self, withContent: videoContent, delegate: self)
+                FBSDKShareAPI.shareWithContent(videoContent, delegate:self)
+            } else {
+                let loginManager = FBSDKLoginManager()
+                loginManager.logInWithPublishPermissions(PublishPermissions, fromViewController: self, handler: {
+                    _, _ in
+                    FBSDKShareAPI.shareWithContent(videoContent, delegate:self)
+                })
+            }
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

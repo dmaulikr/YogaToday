@@ -2,9 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B17c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RGS-Un-Kbb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Delegate-->
         <scene sceneID="Wid-MF-b1j">
             <objects>
                 <viewController id="RGS-Un-Kbb" customClass="HomeViewController" customModule="YogaToday" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,6 +56,35 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-f3-mr6" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="281" y="285" width="38" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <outlet property="delegate" destination="RGS-Un-Kbb" id="svw-MJ-20Y"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="De4-4b-gjv">
+                                <rect key="frame" x="250" y="177" width="100" height="100"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="G6f-2F-fV9"/>
+                                    <constraint firstAttribute="height" constant="100" id="qwu-FT-61V"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS7-Hp-aU9">
+                                <rect key="frame" x="540" y="28" width="40" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="XCA-o9-qZT"/>
+                                </constraints>
+                                <state key="normal" title="Share">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sharePressed:" destination="RGS-Un-Kbb" eventType="touchUpInside" id="fQI-RA-ssb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.1764705882" green="0.42352941179999998" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,6 +92,7 @@
                             <constraint firstItem="QQz-tP-cZj" firstAttribute="centerX" secondItem="7yI-ON-F4e" secondAttribute="centerX" id="0gs-Dr-rXL">
                                 <variation key="heightClass=compact" constant="0.0"/>
                             </constraint>
+                            <constraint firstItem="De4-4b-gjv" firstAttribute="top" secondItem="WyO-6D-I8Y" secondAttribute="bottom" constant="8" id="3x5-UP-6QR"/>
                             <constraint firstItem="YUT-nY-uFe" firstAttribute="top" secondItem="QQz-tP-cZj" secondAttribute="bottom" constant="16" id="4Ln-Gs-sja">
                                 <variation key="heightClass=compact" constant="8"/>
                             </constraint>
@@ -83,14 +114,21 @@
                                 <variation key="heightClass=compact" constant="8"/>
                             </constraint>
                             <constraint firstItem="YUT-nY-uFe" firstAttribute="leading" secondItem="BJL-5U-bOE" secondAttribute="leading" id="SXc-kv-OCs"/>
+                            <constraint firstItem="sS7-Hp-aU9" firstAttribute="trailing" secondItem="BJL-5U-bOE" secondAttribute="trailingMargin" id="cuC-ue-eJw"/>
+                            <constraint firstItem="hTJ-f3-mr6" firstAttribute="top" secondItem="De4-4b-gjv" secondAttribute="bottom" constant="8" id="dTZ-hg-VEU"/>
+                            <constraint firstItem="hTJ-f3-mr6" firstAttribute="centerX" secondItem="BJL-5U-bOE" secondAttribute="centerX" id="hPv-al-6bW"/>
+                            <constraint firstItem="De4-4b-gjv" firstAttribute="centerX" secondItem="BJL-5U-bOE" secondAttribute="centerX" id="kZQ-dt-Nxf"/>
                             <constraint firstItem="YUT-nY-uFe" firstAttribute="centerX" secondItem="QQz-tP-cZj" secondAttribute="centerX" constant="-0.5" id="qOp-u9-vfY">
                                 <variation key="heightClass=compact" constant="-0.5"/>
                             </constraint>
+                            <constraint firstItem="sS7-Hp-aU9" firstAttribute="top" secondItem="SLN-KH-ceD" secondAttribute="bottom" constant="8" id="sD9-cO-7eW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="avatarImageView" destination="De4-4b-gjv" id="wV5-xA-DN4"/>
                         <outlet property="dayLabel" destination="QQz-tP-cZj" id="o3z-Fa-AzD"/>
                         <outlet property="lineChartView" destination="YUT-nY-uFe" id="YIF-Gs-g6C"/>
+                        <outlet property="loginButton" destination="hTJ-f3-mr6" id="Lbi-5h-MAf"/>
                         <outlet property="pointChangeLabel" destination="WyO-6D-I8Y" id="EKG-i3-3vh"/>
                         <outlet property="pointLabel" destination="cYe-Kf-cIj" id="6UY-nd-MZz"/>
                         <outlet property="pointOnDayLabel" destination="7yI-ON-F4e" id="snS-Ae-r8j"/>

@@ -18,5 +18,5 @@ FOUNDATION_EXPORT const unsigned char YogaTodayKitVersionString[];
 
 #import <YogaTodayKit/NSDate+Utilities.h>
 #import <YogaTodayKit/JBChartView.h>
+#import <YogaTodayKit/JBBarChartView.h>
 #import <YogaTodayKit/JBLineChartView.h>
-

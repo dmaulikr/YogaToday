@@ -22,9 +22,11 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 
 public typealias StatsCompletionBlock = (stats: YogaStats?, error: NSError?) -> ()
 public typealias HistoryCompletionBlock = (values: [YogaPoint]?, error: NSError?) -> ()
+public typealias ImageCompletionBlock = (image: Image?, error: NSError?) -> ()
 
 public class YogaService {
     
@@ -54,13 +56,12 @@ public class YogaService {
             return
         }
         
-        Alamofire.request(.GET, "https://blockchain.info/stats?format=json")
-            .responseJSON { _, _, result in
-                print("Success: \(result.isSuccess)")
-                print("Response result: \(result.value)")
+        Alamofire.request(.GET, "https://blockchain.info/stats?format=json").responseJSON { response in
+                print("Success: \(response.result.isSuccess)")
+                print("Response result: \(response.result.value)")
 
-                if result.isSuccess {
-                    if let jsonData = result.value {
+                if response.result.isSuccess {
+                    if let jsonData = response.result.value {
                         let json = JSON(jsonData)
                         let stats: YogaStats = YogaStats(fromJSON: json)
                         self.cacheStats(stats)
@@ -83,15 +84,14 @@ public class YogaService {
             return
         }
         
-        Alamofire.request(.GET, "https://blockchain.info/charts/market-price?timespan=30days&format=json")
-            .responseJSON { _, _, result in
-                print("Success: \(result.isSuccess)")
-                print("Response result: \(result.value)")
+        Alamofire.request(.GET, "https://blockchain.info/charts/market-price?timespan=30days&format=json").responseJSON { response in
+                print("Success: \(response.result.isSuccess)")
+                print("Response result: \(response.result.value)")
                 
                 var values = [YogaPoint]()
                 
-                if result.isSuccess {
-                    if let jsonData = result.value {
+                if response.result.isSuccess {
+                    if let jsonData = response.result.value {
                         let json = JSON(jsonData)
                         let pointValues = json["values"]
                         
@@ -167,5 +167,25 @@ public class YogaService {
         
         NSUserDefaults.standardUserDefaults().setValue(pointData, forKey: historyCacheKey)
         NSUserDefaults.standardUserDefaults().setValue(NSDate(), forKey: historyCachedDateKey)
+    }
+    
+    public func loadImageFromPath(path: String, completion: ImageCompletionBlock) {
+        Alamofire.request(.GET, "https://httpbin.org/image/png")
+            .responseImage { response in
+//                debugPrint(response)
+                
+//                print(response.request)
+//                print(response.response)
+//                debugPrint(response.result)
+                
+                if let image = response.result.value {
+//                    print("image downloaded: \(image)")
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(image: image, error: nil)
+                    }
+                } else {
+                    completion(image: nil, error: nil)
+                }
+        }
     }
 }
